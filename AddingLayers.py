@@ -31,7 +31,7 @@ Layer2 = np.dot(Layer1,np.array(weights2).T) + biases2
 #class of layer
 class DenseLayer:
         def __init__(self,n_inputs,n_neurons):
-                self.weights = 0.01 * np.random.rand(n_inputs,n_neurons) # weights have shape(inputs,output)
+                self.weights = 0.01 * np.random.rand(n_inputs,n_neurons) # weights have shape(inputs,neuron)
                 self.biases = np.zeros((1,n_neurons))# biases of row vector (1,n_neurons)
 
         def ForwardPass(self,inputs):
