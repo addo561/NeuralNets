@@ -96,6 +96,9 @@ for i in range(1000):
     predictions = np.argmax(acc2.output,axis=1)
     accuracy = np.mean(predictions==y)
     
+    accuracy_stop = 0.94
+    if math.isclose(accuracy,accuracy_stop):
+        break
     if loss<lowest_loss:
         print(f'iteration: {i} loss: {loss} accuracy:{accuracy}')
         best_dense1_weights = dense1.weights.copy()
