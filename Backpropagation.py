@@ -55,6 +55,7 @@ class softmax:
             self.dinputs[index] = np.dot(jacobian_matrix,single_dvalues)
 
 
+
 #Common loss
 class loss:
     def calculate(self,output,y):
