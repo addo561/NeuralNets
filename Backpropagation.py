@@ -1,6 +1,7 @@
 import numpy as np   
 import nnfs 
 from nnfs.datasets import spiral_data
+import matplotlib.pyplot as plt 
 
 # fitering correct labels,finding confidences and mean
 #class of layer
@@ -128,8 +129,8 @@ class Activation_Softmax_Loss_CategoricalCrossEntopy():
 
 
 X,y = spiral_data(samples=100,classes=3)
-#plt.scatter(X[:,0],X[:,1],c=y,cmap='brg')
-#plt.show()
+plt.scatter(X[:,0],X[:,1],c=y,cmap='brg')
+plt.show()
     
 dense1 = DenseLayer(2,3)
 acc1 = activationRelu()
