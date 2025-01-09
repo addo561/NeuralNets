@@ -1,7 +1,8 @@
 import numpy as np 
 from nnfs.datasets import spiral_data 
 import math
-
+from AddingLayers import DenseLayer
+from ActivationFunctions import softmax,activationRelu
 
 #log loss 
 softmax_activation = [0.7,0.2,0.4]
@@ -9,32 +10,6 @@ target = [1,0,0]
 loss = -(math.log(softmax_activation[0]))#since it is the correct class
 #print(loss)
 
-
-# fitering correct labels,finding confidences and mean
-#class of layer
-class DenseLayer:
-        def __init__(self,n_inputs,n_neurons):
-                self.weights = 0.01 * np.random.rand(n_inputs,n_neurons) # weights have shape(inputs,neurons)
-                self.biases = np.zeros((1,n_neurons))# biases of row vector (1,n_neurons)
-
-        def ForwardPass(self,inputs):
-                self.output =  np.dot(inputs,self.weights) + self.biases #inputs * weights + biases giving you the neurons
-        
-
-
-#Relu class -> max(0,x)
-class activationRelu:
-    def forward(self,inputs):
-        self.output = np.maximum(0,inputs)
-    
-    
-#softmax
-class softmax:
-    def forward(self,inputs):
-        #unnoramlized probability
-        exp_vals = np.exp(inputs-np.max(inputs,axis=1,keepdims=True)) #-np.max to prevent exploding  values
-        #normalize
-        self.output = exp_vals/np.sum(exp_vals,axis=1,keepdims=True)    
 
 #Common loss
 class loss:

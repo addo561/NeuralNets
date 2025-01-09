@@ -1,17 +1,7 @@
 import numpy as np  
 import nnfs 
 from nnfs.datasets import spiral_data
-
-
-#class of layer
-class DenseLayer:
-        def __init__(self,n_inputs,n_neurons):
-                self.weights = 0.01 * np.random.rand(n_inputs,n_neurons) # weights have shape(inputs,neurons)
-                self.biases = np.zeros((1,n_neurons))# biases of row vector (1,n_neurons)
-
-        def ForwardPass(self,inputs):
-                self.output =  np.dot(inputs,self.weights) + self.biases #inputs * weights + biases giving you the neurons
-        
+from AddingLayers import DenseLayer #import Dense layer
 
 
 #Relu class -> max(0,x)
@@ -40,9 +30,9 @@ acc2 = softmax()
 dense1.ForwardPass(X)# X from the spiral Data#
 acc1.forward(dense1.output)#pass output to relu
 
-print(acc1.output[:5])
+print('acc1 :',acc1.output[:5])
 
 dense2.ForwardPass(acc1.output)#pass output of relu to second layer
 acc2.forward(dense2.output)#apply softmax on second layer output
 
-print(acc2.output[:5])
+print('acc2 :',acc2.output[:5])
