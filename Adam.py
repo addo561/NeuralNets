@@ -4,10 +4,6 @@ from nnfs.datasets import spiral_data
 from Backpropagation import DenseLayer,softmax,activationRelu,loss,categorical_CrossEntropyLoss,Activation_Softmax_Loss_CategoricalCrossEntopy
 
 
-
-
-
-
 class Optimizer_Adam:
     # Initialize optimizer - set settings
     def __init__(self, learning_rate=0.001, decay=0., epsilon=1e-7,
