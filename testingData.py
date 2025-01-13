@@ -16,25 +16,25 @@ dense2 = DenseLayer(64, 3)
 # Create Softmax classifier's combined loss and activation
 loss_activation = Activation_Softmax_Loss_CategoricalCrossEntopy()
 # Perform a forward pass of our testing data through this layer
-for i in range(1000):
-    dense1.ForwardPass(X_test)
-    # Perform a forward pass through activation function
-    # takes the output of first dense layer here
 
-    activation1.forward(dense1.output)
-    # Perform a forward pass through second Dense layer
-    # takes outputs of activation function of first layer as inputs
+dense1.ForwardPass(X_test)
+# Perform a forward pass through activation function
+# takes the output of first dense layer here
 
-    dense2.ForwardPass(activation1.output)
-    # Perform a forward pass through the activation/loss function
-    # takes the output of second dense layer here and returns loss
+activation1.forward(dense1.output)
+# Perform a forward pass through second Dense layer
+# takes outputs of activation function of first layer as inputs
 
-    loss = loss_activation.forward(dense2.output, y_test)
-    # Calculate accuracy from output of activation2 and targets
-    # calculate values along first axis 
+dense2.ForwardPass(activation1.output)
+# Perform a forward pass through the activation/loss function
+# takes the output of second dense layer here and returns loss
 
-    predictions = np.argmax(loss_activation.output, axis=1)
-    if len(y_test.shape) == 2:
-        y_test = np.argmax(y_test, axis=1)
-    accuracy = np.mean(predictions==y_test)
-    print(f'validation, acc: {accuracy:.3f}, loss: {loss:.3f}')
+loss = loss_activation.forward(dense2.output, y_test)
+# Calculate accuracy from output of activation2 and targets
+# calculate values along first axis 
+
+predictions = np.argmax(loss_activation.output, axis=1)
+if len(y_test.shape) == 2:
+    y_test = np.argmax(y_test, axis=1)
+accuracy = np.mean(predictions==y_test)
+print(f'validation, acc: {accuracy:.3f}, loss: {loss:.3f}')
