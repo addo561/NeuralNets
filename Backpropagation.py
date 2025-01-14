@@ -131,7 +131,8 @@ class Activation_Softmax_Loss_CategoricalCrossEntopy():
 X,y = spiral_data(samples=100,classes=3)
 plt.scatter(X[:,0],X[:,1],c=y,cmap='brg')
 plt.show()
-    
+
+ 
 dense1 = DenseLayer(2,3)
 acc1 = activationRelu()
 dense2 = DenseLayer(3,3)
@@ -143,37 +144,38 @@ loss_activation = Activation_Softmax_Loss_CategoricalCrossEntopy()
 '''acc2 = softmax()
 loss_function = categorical_CrossEntropyLoss()
 '''
-#layers
-dense1.ForwardPass(X)# X from the spiral Data#
-acc1.forward(dense1.output)#pass output to relu
-dense2.ForwardPass(acc1.output)#pass output of relu to second layer
-# acc2.forward(dense2.output) apply softmax on second layer output
+if __name__ =='__main__':
+    #layers
+    dense1.ForwardPass(X)# X from the spiral Data#
+    acc1.forward(dense1.output)#pass output to relu
+    dense2.ForwardPass(acc1.output)#pass output of relu to second layer
+    # acc2.forward(dense2.output) apply softmax on second layer output
 
-loss = loss_activation.forward(dense2.output,y)
+    loss = loss_activation.forward(dense2.output,y)
 
-# Let's see output of the first few samples:
-print(loss_activation.output[:5])
+    # Let's see output of the first few samples:
+    print(loss_activation.output[:5])
 
-print(f'loss:',{loss})
-    
-# Calculate accuracy from output of activation2 and targets
-# calculate values along first axis
-predictions = np.argmax(loss_activation.output, axis=1)
-if len(y.shape) == 2:
- y = np.argmax(y, axis=1)
-accuracy = np.mean(predictions==y)
-print('acc: ',accuracy)    
-
-
-#backward
-loss_activation.backward(loss_activation.output,y)
-dense2.backward(loss_activation.dinputs)
-acc1.backward(dense2.dinputs)
-dense1.backward(acc1.dinputs)
+    print(f'loss:',{loss})
+        
+    # Calculate accuracy from output of activation2 and targets
+    # calculate values along first axis
+    predictions = np.argmax(loss_activation.output, axis=1)
+    if len(y.shape) == 2:
+        y = np.argmax(y, axis=1)
+    accuracy = np.mean(predictions==y)
+    print('acc: ',accuracy)    
 
 
-# Print gradients
-print(dense1.dweights)
-print(dense1.dbiases)
-print(dense2.dweights)
-print(dense2.dbiases)
+    #backward
+    loss_activation.backward(loss_activation.output,y)
+    dense2.backward(loss_activation.dinputs)
+    acc1.backward(dense2.dinputs)
+    dense1.backward(acc1.dinputs)
+
+
+    # Print gradients
+    print(dense1.dweights)
+    print(dense1.dbiases)
+    print(dense2.dweights)
+    print(dense2.dbiases)

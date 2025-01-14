@@ -51,9 +51,9 @@ class Dense_Layer:
             dl1[self.biases < 0 ] = -1
             self.dbiases += self.bias_regularizer_l1 * dl1
             
-            #l2 bias
-            if self.bias_regularizer_l2 > 0 : 
-                self.biases += 2 * self.bias_regularizer_l2 * self.biases
+        #l2 bias
+        if self.bias_regularizer_l2 > 0 : 
+            self.biases += 2 * self.bias_regularizer_l2 * self.biases
         
         #gradients on values
         self.dinputs = np.dot(dvalues,self.weights.T)
@@ -74,11 +74,11 @@ class loss_E:
            
         # L2 regularization - weights
         if layer.weight_regularizer_l2 > 0: 
-            regularization_loss += layer.weight_regularizer_l2* np.sum((layer.weights**2))
+            regularization_loss += layer.weight_regularizer_l2 * np.sum((layer.weights**2))
             
         #l1 bias
         if layer.bias_regularizer_l1 > 0 :
-            regularization_loss += layer.bias_regularizer_l1*np.sum(np.abs(layer.biases))        
+            regularization_loss += layer.bias_regularizer_l1 * np.sum(np.abs(layer.biases))        
 
         #l2 bias
         if layer.bias_regularizer_l2 > 0 :
