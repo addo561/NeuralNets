@@ -5,7 +5,7 @@ from Sigmoid import  *
 from BinaryCrossEntropyloss import *
 
 class Activation_linear:
-    def forward(self,inputs):
+    def forward(self,inputs,training):
         self.inputs= inputs
         self.output= inputs
         
@@ -13,7 +13,9 @@ class Activation_linear:
         # derivative is 1, 1 * dvalues = dvalues - the chain rule
 
         self.dinputs = dvalues.copy()
-        
+    # Calculate predictions for outputs
+    def predictions(self, outputs):
+        return outputs    
 
 class mean_squared_error(Loss):
     def forward(self,y_pred,y_true):

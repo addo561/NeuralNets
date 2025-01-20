@@ -2,7 +2,7 @@ import numpy as np
 from nnfs.datasets import spiral_data 
 import math
 from AddingLayers import DenseLayer
-from ActivationFunctions import softmax,activationRelu
+from ActivationFunctionsBasic import softmax,activationRelu
 
 #log loss 
 softmax_activation = [0.7,0.2,0.4]

@@ -2,7 +2,7 @@ import numpy as np
 from nnfs.datasets import spiral_data,vertical_data 
 import math
 from AddingLayers import DenseLayer
-from ActivationFunctions import softmax,activationRelu
+from ActivationFunctionsBasic import softmax,activationRelu
 from Loss import loss,categorical_CrossEntropyLoss
 
 
