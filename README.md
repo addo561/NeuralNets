@@ -1,5 +1,5 @@
 # Neural Networks from Scratch
-
+(fashion dataset too large download yourself😊,use realdata file)
 This project demonstrates the implementation of a **Neural Network** from scratch using Python. The goal of this project is to create a simple neural network model that learns from data through training, adjusts its weights and biases, and improves its predictions over time.
 
 ## Overview
